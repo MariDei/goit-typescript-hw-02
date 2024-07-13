@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-const ACCESS_KEY = `XwurAsxbIvpFOqYLfiOPooi-NtzQ2JO4IEDnUVnWzEE`;
+const ACCESS_KEY = `MgNqddEbH_y1KNzbeqRxTxaHsApjV2YACAqElrPD00w`;
 
 axios.defaults.baseURL = 'https://api.unsplash.com';
 
