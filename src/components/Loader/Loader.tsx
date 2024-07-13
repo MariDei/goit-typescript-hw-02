@@ -6,14 +6,9 @@ const Loader: React.FC = () => {
     <div className={css.loader}>
       <RotatingLines
         visible={true}
-        height="50"
-        width="50"
-        color="green"
         strokeWidth="5"
         animationDuration="0.75"
         ariaLabel="rotating-lines-loading"
-        wrapperClass=""
-        wrapperStyle={{}}
       />
       <p className={css.message}>Loading... please wait...</p>
     </div>

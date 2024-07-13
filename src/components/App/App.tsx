@@ -22,8 +22,7 @@ const App: React.FC = () => {
       try {
         setLoading(true);
         setError(false);
-        const data = await getImagesApi(query, page);
-        console.log(data);
+        const data: any = await getImagesApi(query, page);
         setImages(prev => [...prev, ...data]);
       } catch (e) {
         setError(true);
