@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import { ImageModalProps } from './ImageModal.type';
 import css from './ImageModal.module.css';
 
 const customStyles = {
@@ -18,15 +19,19 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const ImageModal = ({ modalIsOpen, modalIsClose, image }) => {
+const ImageModal: React.FC<ImageModalProps> = ({
+  modalIsOpen,
+  modalIsClose,
+  image,
+}) => {
   return (
     <Modal
       style={customStyles}
       isOpen={modalIsOpen}
       onRequestClose={modalIsClose}
       contentLabel="Image Modal"
-      closeOnOverlayClick={true}
-      closeOnEsc={true}
+      shouldCloseOnOverlayClick={true}
+      shouldCloseOnEsc={true}
     >
       <img
         className={css.image}

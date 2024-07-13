@@ -1,6 +1,7 @@
+import { ImageCardProps } from './ImageCard.type';
 import css from './ImageCard.module.css';
 
-function ImageCard({ image, onImageModal }) {
+const ImageCard: React.FC<ImageCardProps> = ({ image, onImageModal }) => {
   return (
     <div className={css.item}>
       <img
@@ -21,6 +22,6 @@ function ImageCard({ image, onImageModal }) {
       </ul>
     </div>
   );
-}
+};
 
 export default ImageCard;

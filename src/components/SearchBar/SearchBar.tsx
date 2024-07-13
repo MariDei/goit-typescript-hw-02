@@ -1,14 +1,21 @@
-import { Field, Form, Formik } from 'formik';
+import { Field, Form, Formik, FormikHelpers } from 'formik';
 import toast, { Toaster } from 'react-hot-toast';
 import css from './SearchBar.module.css';
 
-function SearchBar({ onSubmit }) {
+interface SearchBarProps {
+  onSubmit: (query: string) => void;
+}
+
+function SearchBar({ onSubmit }: SearchBarProps): JSX.Element {
   return (
     <header className={css.header}>
       <Toaster position="top-center" reverseOrder={false} />
       <Formik
         initialValues={{ query: '' }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(
+          values: { query: string },
+          { setSubmitting }: FormikHelpers<{ query: string }>
+        ) => {
           if (values.query.trim() === '') {
             toast.error('Search field cannot be empty!', {
               style: {

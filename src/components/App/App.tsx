@@ -6,15 +6,16 @@ import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
+import { Image } from './App.type';
 import './App.module.css';
 
-function App() {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [query, setQuery] = useState('');
-  const [page, setPage] = useState(1);
-  const [selectedImage, setSelectedImage] = useState(false);
+const App: React.FC = () => {
+  const [images, setImages] = useState<Image[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>('');
+  const [page, setPage] = useState<number>(1);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
 
   useEffect(() => {
     const searchImages = async () => {
@@ -22,6 +23,7 @@ function App() {
         setLoading(true);
         setError(false);
         const data = await getImagesApi(query, page);
+        console.log(data);
         setImages(prev => [...prev, ...data]);
       } catch (e) {
         setError(true);
@@ -29,10 +31,11 @@ function App() {
         setLoading(false);
       }
     };
+
     query && searchImages();
   }, [page, query]);
 
-  const handleSubmit = async searchQuery => {
+  const handleSubmit = async (searchQuery: string) => {
     setQuery(searchQuery);
     setImages([]);
     setPage(1);
@@ -42,7 +45,7 @@ function App() {
     setPage(page + 1);
   };
 
-  const handleModalClick = image => {
+  const handleModalClick = (image: Image) => {
     setSelectedImage(image);
   };
 
@@ -72,6 +75,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;
